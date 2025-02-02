@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Калькулятор энергопотребления</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Калькулятор энергопотребления</h1>
+
+  <!-- Форма ввода данных о приборе -->
+  <form id="device-form" class="device-form">
+    <div class="form-row">
+      <label for="deviceName">Название прибора:</label>
+      <input 
+        type="text" 
+        id="deviceName" 
+        name="deviceName" 
+        required
+        placeholder="Например, Чайник" 
+      >
+    </div>
+
+    <div class="form-row">
+      <label for="usageHours">Время использования (часов):</label>
+      <input 
+        type="number" 
+        id="usageHours" 
+        name="usageHours" 
+        min="0" 
+        max="24" 
+        required
+        placeholder="0 - 24"
+      >
+      <span id="hours-error" class="error-message"></span>
+    </div>
+
+    <div class="form-row">
+      <label for="power">Мощность (Вт):</label>
+      <input 
+        type="number" 
+        id="power" 
+        name="power" 
+        min="0" 
+        required
+        placeholder="Например, 2000" 
+      >
+    </div>
+
+    <div class="form-row">
+      <label for="pricePerKwh">Цена за кВт*ч (руб):</label>
+      <input 
+        type="number" 
+        id="pricePerKwh" 
+        name="pricePerKwh" 
+        min="0" 
+        step="0.01" 
+        required
+        placeholder="Например, 4.32"
+      >
+    </div>
+
+    <!-- Кнопки -->
+    <div class="form-buttons">
+      <button type="button" id="calculateBtn">Рассчитать</button>
+      <button type="button" id="addDeviceBtn">Добавить прибор</button>
+      <button type="button" id="resetBtn">Сбросить</button>
+    </div>
+  </form>
+
+  <!-- Блок с таблицей результатов (изначально скрыт) -->
+  <div id="table-container" style="display: none;">
+    <table id="results-table">
+      <thead id="table-head"></thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
